@@ -1,10 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Item } from "./types";
+import { Condition, Item } from "./types";
+import { fetchConditions } from "./utils";
 
-const initialState: Item[] = [
-  { title: "Item 0 Title", description: "Item 0 Description" },
-  { title: "Item 1 Title", description: "Item 1 Description" },
-];
+const initialState: Item[] = [];
 
 const itemSlice = createSlice({
   name: "item",
@@ -20,7 +18,19 @@ const itemSlice = createSlice({
       };
     },
   },
+  extraReducers: (builder) => {
+    // TODO: Deal with unfulfilled cases
+    builder.addCase(fetchConditions.fulfilled, (state, action) => {
+      const conditions = action.payload.condition as Condition[];
+      for (let c of conditions) {
+        state.push({
+          title: c.name,
+          description: c.name,
+        });
+      }
+    });
+  },
 });
 
-export const { addItem } = itemSlice.actions;
+export const { addItem, addItems } = itemSlice.actions;
 export default itemSlice.reducer;

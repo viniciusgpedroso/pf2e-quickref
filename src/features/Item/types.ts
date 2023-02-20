@@ -6,3 +6,8 @@ export interface Item {
 export interface ItemProps {
   item: Item;
 }
+
+export interface Condition {
+  name: string;
+  entries: string[];
+}
