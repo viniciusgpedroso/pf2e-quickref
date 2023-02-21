@@ -30,3 +30,13 @@ export const fetchConditions = createAsyncThunk(
     }
   }
 );
+
+export const generateConditionIconURL = (conditionName: string): string => {
+  const prefix =
+    "https://raw.githubusercontent.com/foundryvtt/pf2e/master/" +
+    "static/icons/conditions-2/";
+  const suffix = ".webp";
+  const formattedName = conditionName.toLowerCase().trim().replace(/\s+/g, "-");
+
+  return `${prefix}${formattedName}${suffix}`;
+};
