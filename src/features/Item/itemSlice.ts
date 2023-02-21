@@ -1,6 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Condition, Item, ItemState } from "./types";
-import { fetchConditions, LoadingStates } from "./utils";
+import {
+  fetchConditions,
+  generateConditionIconURL,
+  LoadingStates,
+} from "./utils";
 
 const initialState: ItemState = {
   items: [] as Item[],
@@ -30,6 +34,7 @@ const itemSlice = createSlice({
           state.items.push({
             title: c.name,
             description: c.name,
+            iconURL: generateConditionIconURL(c.name),
           });
         }
       })
