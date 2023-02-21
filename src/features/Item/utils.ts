@@ -4,6 +4,12 @@ enum SessionStorageKeys {
   CONDITIONS = "pf2e-conditions",
 }
 
+export enum LoadingStates {
+  IDLE,
+  PENDING,
+  FULFILLED,
+}
+
 // TODO: Add check for new versions of schemas and update automatically using local storage
 export const fetchConditions = createAsyncThunk(
   "items/fetchConditions",

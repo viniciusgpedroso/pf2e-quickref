@@ -12,7 +12,7 @@ export function ItemGroup() {
     // ! only once
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const list = useAppSelector((state: RootState) => state.items);
+  const list = useAppSelector((state: RootState) => state.items.items);
 
   return (
     <div>
