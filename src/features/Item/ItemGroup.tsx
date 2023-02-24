@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { RootState } from "../../app/store";
 import { SingleItem } from "./SingleItem";
@@ -11,6 +11,8 @@ interface ItemGroupProps {
 
 export function ItemGroup(props: ItemGroupProps) {
   const dispatch = useAppDispatch();
+  const [open, setOpen] = useState(true);
+
   useEffect(() => {
     dispatch(fetchConditions());
     // ! dispatch doesn't change between re-renders, using empty array to run
@@ -19,14 +21,25 @@ export function ItemGroup(props: ItemGroupProps) {
   }, []);
   const list = useAppSelector((state: RootState) => state.items.items);
 
+  const toggle = () => {
+    setOpen(!open);
+  };
+
   return (
     <div className={styles.group}>
-      <h1 className={styles.title}>{props.title}</h1>
-      <ul className={styles["item-list"]}>
-        {list.map((item) => (
-          <SingleItem key={item.title} item={item} />
-        ))}
-      </ul>
+      <div className={styles.header}>
+        <h1 className={styles.title}>{props.title}</h1>
+        <h1 className={styles.collapse} onClick={toggle}>
+          {`${open ? "-" : "+"}`}
+        </h1>
+      </div>
+      {open && (
+        <ul className={styles["item-list"]}>
+          {list.map((item) => (
+            <SingleItem key={item.title} item={item} />
+          ))}
+        </ul>
+      )}
     </div>
   );
 }

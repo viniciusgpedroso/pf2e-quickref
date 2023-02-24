@@ -20,3 +20,18 @@ $primary-color: black;
   color: white;
   margin: 0;
 }
+
+.collapse {
+  font-family: "Taroca";
+  background-color: $primary-color;
+  padding-bottom: 15px;
+  padding-right: 15px;
+  color: white;
+  margin: 0;
+}
+
+.header {
+  display: flex;
+  background-color: $primary-color;
+  justify-content: space-between;
+}
