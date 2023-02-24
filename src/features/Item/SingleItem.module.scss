@@ -1,0 +1,42 @@
+@import "../../utils/variables.scss";
+
+.single-item-container {
+  display: flex;
+  flex-wrap: nowrap;
+  box-sizing: border-box;
+  padding: 10px;
+  min-width: 200px;
+  max-width: $single-item-max-width;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+.icon {
+  width: 75px;
+  height: 75px;
+  padding: 4px;
+}
+
+.text-box {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+}
+
+.text-box-title {
+  font-family: "Taroca";
+}
+
+.text-box-description {
+  font-family: "GoodPro400";
+  display: -webkit-box;
+  max-width: 200px;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

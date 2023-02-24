@@ -1,0 +1,16 @@
+$single-item-max-width: 300px;
+
+@font-face {
+  font-family: "Taroca";
+  src: local("Taroca"), url("./fonts/Taroca.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "GoodPro400";
+  src: local("GoodPro400"), url("./fonts/good-pro-400.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "SabonRoman";
+  src: local("SabonRoman"), url("./fonts/Sabon-Roman.ttf") format("truetype");
+}
