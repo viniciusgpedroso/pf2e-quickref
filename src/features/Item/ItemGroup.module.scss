@@ -1,0 +1,19 @@
+$primary-color: black;
+
+.item-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+/* TODO: Extract variables */
+.group {
+  border: 15px solid $primary-color;
+  font-family: "Lora", Arial, sans-serif;
+  border-radius: 25px;
+}
+
+.title {
+  background-color: $primary-color;
+  padding-bottom: 15px;
+  color: white;
+  margin: 0;
+}

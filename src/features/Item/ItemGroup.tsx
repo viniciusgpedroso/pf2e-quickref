@@ -3,8 +3,13 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { RootState } from "../../app/store";
 import { SingleItem } from "./SingleItem";
 import { fetchConditions } from "./utils";
+import styles from "./ItemGroup.module.scss";
 
-export function ItemGroup() {
+interface ItemGroupProps {
+  title: string;
+}
+
+export function ItemGroup(props: ItemGroupProps) {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(fetchConditions());
@@ -15,8 +20,9 @@ export function ItemGroup() {
   const list = useAppSelector((state: RootState) => state.items.items);
 
   return (
-    <div>
-      <ul>
+    <div className={styles.group}>
+      <h1 className={styles.title}>{props.title}</h1>
+      <ul className={styles["item-list"]}>
         {list.map((item) => (
           <SingleItem key={item.title} item={item} />
         ))}
