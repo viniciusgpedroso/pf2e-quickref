@@ -3,7 +3,7 @@ import { LoadingStates } from "./utils";
 
 export interface Item {
   title: string;
-  description: string;
+  description: string[];
   iconURL: string;
 }
 

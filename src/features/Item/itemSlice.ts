@@ -33,7 +33,7 @@ const itemSlice = createSlice({
         for (let c of conditions) {
           state.items.push({
             title: c.name,
-            description: c.name,
+            description: parseDescriptionString(c.entries),
             iconURL: generateConditionIconURL(c.name),
           });
         }
@@ -51,6 +51,16 @@ const itemSlice = createSlice({
       });
   },
 });
+
+const parseDescriptionString = (entries: string[]): string[] => {
+  // TODO: Create types and check for no string entries
+  const re = /\{(.*?\s(.*?))\}/g;
+  for (let i = 0; i < entries.length; i++) {
+    if (typeof entries[i] === "string")
+      entries[i] = entries[i].replace(re, "$2");
+  }
+  return entries;
+};
 
 export const { addItem, addItems } = itemSlice.actions;
 export default itemSlice.reducer;

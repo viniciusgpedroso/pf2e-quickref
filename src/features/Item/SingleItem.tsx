@@ -16,9 +16,18 @@ export function SingleItem(itemProps: ItemProps) {
       <div className={styles["text-box"]}>
         <div className={styles["text-box-title"]}>{itemProps.item.title}</div>
         <div className={styles["text-box-description"]}>
-          {itemProps.item.description}
+          {sliceDescription(itemProps.item.description)}
         </div>
       </div>
     </div>
   );
 }
+
+const sliceDescription = (entries: string[]): string => {
+  const descriptionSliceIndex = 100;
+  if (entries.length < 1) return "";
+  const firstEntry = entries[0];
+  const indexDot = firstEntry.indexOf(".");
+  const index = indexDot === -1 ? descriptionSliceIndex : indexDot;
+  return firstEntry.slice(0, index);
+};
